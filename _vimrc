@@ -5,35 +5,41 @@ endif
 
 call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
+
 "add plgins
 "javascript
 NeoBundle 'jiangmiao/simple-javascript-indenter'
 NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'marijnh/tern_for_vim'
-"jQuery
+NeoBundle 'mattn/jscomplete-vim'
 NeoBundle 'vim-scripts/jQuery'
-"snippet
-NeoBundle 'Shougo/neocomplcache.vim'
+
 "indent
 NeoBundle 'Yggdroot/indentLine'
+
 "tab
 NeoBundle 'thinca/vim-tabrecent'
+
 "python
 NeoBundle 'davidhalter/jedi-vim'
-"qiita
-NeoBundle 'mattn/qiita-vim'
+
 "twitter
 NeoBundle 'basyura/TweetVim'
+NeoBundle 'basyura/bitly.vim'
+
 "web-api
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'basyura/twibill.vim'
+
 "browser
 NeoBundle 'tyru/open-browser.vim'
-"???
-NeoBundle 'mattn/jscomplete-vim'
+
+"outline
 NeoBundle 'h1mesuke/unite-outline'
-NeoBundle 'basyura/bitly.vim'
+
+"ui
 NeoBundle 'Shougo/unite.vim'
+
 filetype plugin on
 call neobundle#end()
 NeoBundleCheck
