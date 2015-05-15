@@ -1,0 +1,96 @@
+"plugins
+if has('vim_starting')
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+call neobundle#begin(expand('~/.vim/bundle/'))
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+"indent
+NeoBundle 'Yggdroot/indentLine'
+
+"outline
+NeoBundle 'h1mesuke/unite-outline'
+
+"tab
+NeoBundle 'thinca/vim-tabrecent'
+
+"twitter
+NeoBundle 'basyura/TweetVim'
+NeoBundle 'basyura/bitly.vim'
+
+"web-api
+NeoBundle 'mattn/webapi-vim'
+NeoBundle 'basyura/twibill.vim'
+
+"browser
+NeoBundle 'tyru/open-browser.vim'
+
+"javascript
+NeoBundle 'jiangmiao/simple-javascript-indenter'
+NeoBundle 'jelera/vim-javascript-syntax'
+NeoBundle 'marijnh/tern_for_vim'
+
+"coffee
+NeoBundle 'kchmck/vim-coffee-script'
+
+filetype plugin on
+call neobundle#end()
+NeoBundleCheck
+
+"setting
+set number
+set title
+set showmatch
+
+"indentLine
+let g:indentline_color_term = 111
+let g:indentLine_color_gui = '708090'
+let g:indentLine_char = '|'
+set smartindent
+set autoindent
+
+syntax on
+set ignorecase
+set smartcase
+set wrapscan
+setl omnifunc=jscomplete#CompleteJS
+hi Comment ctermfg=2
+
+"tab setting
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+
+"タブ、空白、改行の可視化
+"set list
+"set listchars=tab:>.,trail:_,eol:↲,extends:>,precedes:<,nbsp:%
+
+"全角スペースをハイライト表示
+function! ZenkakuSpace()
+    highlight ZenkakuSpace cterm=reverse ctermfg=DarkMagenta gui=reverse guifg=DarkMagenta
+endfunction
+
+if has('syntax')
+    augroup ZenkakuSpace
+        autocmd!
+        autocmd ColorScheme       * call ZenkakuSpace()
+        autocmd VimEnter,WinEnter * match ZenkakuSpace /　/
+    augroup END
+    call ZenkakuSpace()
+endif
+
+"fileType
+au BufNewFile,BufRead *.less setf less
+au BufRead,BufNewFile,BufReadPre *.coffee   set filetype=coffee
+au BufRead,BufNewFile,BufReadPre *.json   set filetype=json
+
+augroup vimrc
+autocmd! FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd! FileType json setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd! FileType php setlocal noexpandtab shiftwidth=2 tabstop=2 softtabstop=2
+autocmd! FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd! FileType css  setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd! FileType less  setlocal shiftwidth=2 tabstop=2 softtabstop=2
+augroup END
